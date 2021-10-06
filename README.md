@@ -1,5 +1,5 @@
 # screwCalculusMatlab
-screwCalculus package in Matlab for the "Meccanica dei Robot" course @ Università di Pisa Dipartimento di Ingegneria Civile e Industriale
+screwCalculus package for Matlab for the "Meccanica dei Robot" course @ Università di Pisa Dipartimento di Ingegneria Civile e Industriale.
 
 Original screwCalculusPro package:
 
@@ -16,10 +16,10 @@ Original screwCalculusPro package:
 *  Permission is granted to copy, modify and redistribute this file,
 *  provided that this header message is retained. 
 
-porting and new functionalities developed by 
+porting and new functionalities developed by:
 
 * Eugeniu Grabovic, phD in Industrial Engineering at Università di Pisa;
 
 * Simone Vollaro, ... ;
 
-*...
+* . . .
