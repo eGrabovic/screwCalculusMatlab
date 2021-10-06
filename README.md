@@ -18,8 +18,8 @@ Original screwCalculusPro package:
 
 porting and new functionalities developed by 
 
-*Eugeniu Grabovic, phD in Industrial Engineering at Università di Pisa;
+* Eugeniu Grabovic, phD in Industrial Engineering at Università di Pisa;
 
-*Simone Vollaro, ... ;
+* Simone Vollaro, ... ;
 
 *...
