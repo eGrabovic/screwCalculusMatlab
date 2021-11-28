@@ -1,14 +1,35 @@
-function mat = RotY(theta)
+function mat = RotY(theta, deg_bool)
 % ROTY(theta) describes a rotation of the Euler angle THETA around
-%   the Y-axis.
+%   the Y-axis. If DEG_BOOL is true, the input angle will be considereed as
+%   in degree.
+%   Note that the output matrix is always with angles in radiants.
 %
-%   mat = ROTY(theta) return the rotation matrix.
+%   Examples
+%       RotY(pi)
+%   --> [-1   0    0
+%         0   1    0
+%         0   0   -1]
 %
-%   theta - angle of rotation [rad]
+%       RotY(180, true)
+%   --> [-1   0    0
+%         0   1    0
+%         0   0   -1]
+%
+%   Input
+%       theta:      angle of rotation [rad or deg]
+%       deg_bool:   boolean to consider input as degree
+%   Output
+%       mat:        3x3 rotation matrix
 %
 
-    mat = [cos(theta),  0,  sin(theta);...
+    if(nargin == 2) && deg_bool % 'degree' specified
+        th = deg2rad(theta);
+    else
+        th = theta;
+    end
+
+    mat = [cos(th),     0,  sin(th);...
            0,           1,  0;...
-           -sin(theta), 0,  cos(theta)];
+           -sin(th),    0,  cos(th)];
 
 end
