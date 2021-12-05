@@ -5,12 +5,7 @@ function mat = RotY(theta, deg_bool)
 %   Note that the output matrix is always with angles in radiants.
 %
 %   Examples
-%       RotY(pi)
-%   --> [-1   0    0
-%         0   1    0
-%         0   0   -1]
-%
-%       RotY(180, true)
+%       RotY(pi) or RotY(180, true)
 %   --> [-1   0    0
 %         0   1    0
 %         0   0   -1]
@@ -22,8 +17,14 @@ function mat = RotY(theta, deg_bool)
 %       mat:        3x3 rotation matrix
 %
 
-    if(nargin == 2) && deg_bool % 'degree' specified
-        th = deg2rad(theta);
+    if(nargin == 2) % 'degree' specified
+        assert(class(deg_bool) == "logical", ...
+           "Only booleans are allowed as second argument");
+        if deg_bool
+            th = deg2rad(theta);
+        else
+            th = theta;
+        end
     else
         th = theta;
     end
