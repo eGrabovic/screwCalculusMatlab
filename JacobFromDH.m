@@ -12,7 +12,7 @@ function jacobian = JacobFromDH(DHTable, upto)
 
     if exist('upto', 'var')
         if (upto > n) || (upto <= 0)
-            disp("Specified index out of buond. Using number of joints.");
+%             disp("Specified index out of buond. Using number of joints.");
             index = n;
         else
             index = upto;
