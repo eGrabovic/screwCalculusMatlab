@@ -22,7 +22,6 @@ function FKmat = DHFKine(varargin)
 
     % Handle numeric DHTable converted in string because of the 'type'
     % column; non-number elements will be cast to NaN
-    
     if class(DHTable) == "string"
         DHTable = double(DHTable);
     end
@@ -45,6 +44,7 @@ function FKmat = DHFKine(varargin)
             % Whole FK, with pre- and post- transformations
             Tb0 = varargin{2};
             Tne = varargin{3};
+            index = n;
         case 4
             % With pre- and post- transformations, up to the specified
             % joint
@@ -68,7 +68,7 @@ function FKmat = DHFKine(varargin)
 
     % Handle pre-moltiplication matrix
     if exist("Tb0",'var')
-        if any(isnan(Tb0,'all'))
+        if any(isnan(Tb0),'all')
             disp("Tb0 matrix must be numeric!")
             return
         end
@@ -82,7 +82,7 @@ function FKmat = DHFKine(varargin)
 
     % Handle post-moltiplication matrix
     if exist("Tne",'var')
-        if any(isnan(Tne,'all'))
+        if any(isnan(Tne),'all')
             disp("Tne matrix must be numeric!")
             return
         end
