@@ -1,4 +1,6 @@
-function quat = MatToQuat(mat)  
+function quat = MatToQuat(mat)
+% Warning: these are the reverse of conventional argument order:
+% change order once all is consistent to (angle, nhat).
     diag_sum = trace(mat);
 
     if diag_sum > 0

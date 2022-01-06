@@ -6,6 +6,19 @@ function jacobian = JacobFromDH(DHTable, upto)
 %     joints inferrable from the table, the Jacobian built stops at the
 %     UPTO-th joint.                                                    
 
+%TODO: add to current JacobFromDH
+% DHJacobBase(DHtable_, Tb0_) 	
+% 	%Module({g, R, zero, Adg, J, Jb},
+% 		R    = RigidOrientation(Tb0);
+% 		zero = {0, 0, 0};
+% 		g    = RPToHomogeneous(R, zero);
+% 		Adg  = RigidAdjoint(g);
+% 		J    = DHJacob0(DHtable);
+% 		Jb   = Adg.J;
+% 		
+% 		Return(Jb);
+% 	);
+	
     n = size(DHTable,1);
     J  = [];
     FK = DHFKine(DHTable);
