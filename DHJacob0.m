@@ -1,31 +1,21 @@
-function jacobian = JacobFromDH(DHTable, upto)
+function jacobian = DHJacob0(DHTable, upto)
 % JACOBFROMDH builds the Jacobian of the robot related to the supplied
 %     Denavit-Hartemberg DHTABLE. 
 %
 %     If UPTO contains a non-negative integer lower than the number of
 %     joints inferrable from the table, the Jacobian built stops at the
 %     UPTO-th joint.                                                    
-
-%TODO: add to current JacobFromDH
-% DHJacobBase(DHtable_, Tb0_) 	
-% 	%Module({g, R, zero, Adg, J, Jb},
-% 		R    = RigidOrientation(Tb0);
-% 		zero = {0, 0, 0};
-% 		g    = RPToHomogeneous(R, zero);
-% 		Adg  = RigidAdjoint(g);
-% 		J    = DHJacob0(DHtable);
-% 		Jb   = Adg.J;
-% 		
-% 		Return(Jb);
-% 	);
 	
     n = size(DHTable,1);
     J  = [];
     FK = DHFKine(DHTable);
 
     if exist('upto', 'var')
-        if (upto > n) || (upto <= 0)
-%             disp("Specified index out of buond. Using number of joints.");
+        assert((upto < n) && (upto >= 0), ...
+            "Specified index must be non-negative and lower than " + ...
+            "the number of joints")
+
+        if upto == 0 % Remaining edge case
             index = n;
         else
             index = upto;
@@ -33,7 +23,7 @@ function jacobian = JacobFromDH(DHTable, upto)
     else
         index = n;
     end
-    
+
     % Build Jacobian joint-by-joint
     for i = [1:index]
         type = string(DHTable(i, 5));
@@ -59,5 +49,11 @@ function jacobian = JacobFromDH(DHTable, upto)
         J = [J, j];
     end
     
-    jacobian = J;%[J, j];
+    jacobian = J;
+    
+    % If the Jacobian is referred to a non-endeffector joint, pad the
+    % matrix to match the dimensions of the body
+    if index ~= n
+        jacobian = [jacobian, repmat(0, size(jacobian, 1), n-index)];
+    end
 end
