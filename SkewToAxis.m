@@ -1,4 +1,6 @@
 function vet = SkewToAxis(mat)
+% SKEWTOAXIS(mat) generates an axis VET from a skew symmetric matrix MAT
+
     % TODO: implement skewQ and use it here
     if any(size(mat) ~= [3,3]) % and not skewQ
         disp("Argument has wrong dimensions!");

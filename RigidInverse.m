@@ -1,5 +1,5 @@
 function rig_inv = RigidInverse(mat)
-% Calculate the inverse rigid transformation
+% RIGIDINVERSE(g) gives the inverse transformation RIG_INV of MAT
 
     assert(ismatrix(mat), "Provided argument must be a matrix");
     assert(all(size(mat) == [4 4]), ...

@@ -1,4 +1,7 @@
 function skew = AxisToSkew(omega)
+% AXISTOSKEW(omega) generates a skew symmetric matrix SKEW from the axis 
+%   described through the array OMEGA
+
     % Check to make sure the dimensions are okay
     if(length(omega)~=3)
         disp("Argument has wrong dimensions!");
