@@ -1,4 +1,8 @@
 function jacobian = DHJacob0Dyn(DHtable, k)
+% DHJACOB0DYN(DHtable, k) computes the DH spatial JACOBIAN till K-th joint 
+%   with the needed empty columns stacked on the right, based on the
+%   supplied Denavit-Hartemberg table DHTABLE.
+
     n = size(DHtable, 2);
     
     Jk  = [];     

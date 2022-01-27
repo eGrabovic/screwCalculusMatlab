@@ -1,6 +1,9 @@
 function rot = MakeRot(n, angle)
-%Warning: these are the reverse of conventional argument order:*)
-%change order once all is consistent to (angle, nhat).*)
+% MAKEROT(axis, angle) creates the rotation matrix ROT given the unit 
+%   vector N of the axis and the ANGLE
+
+% WARNING: these are the reverse of conventional argument order;
+% change order once all is consistent to (angle, nhat). TODO?
 
     c = cos(angle);
     s = sin(angle);

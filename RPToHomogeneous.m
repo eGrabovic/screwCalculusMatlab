@@ -1,7 +1,8 @@
 function hom = RPToHomogeneous(Rot, pos)
-% Convert a rotation + a translation to a homogeneous matrix *)
+% RPTOHOMOGENEOUS(Rot,pos) forms a homogeneous matrix HOM from a rotation 
+%   matrix ROT and a position vector POS.
 
-    % Check to make sure the dimensions of the args make sense *)
+    % Check to make sure the dimensions of the args make sense
     assert(isvector(pos), "pos is not a vector");
     assert(ismatrix(Rot), "Rot is not a matrix");
 
@@ -12,7 +13,7 @@ function hom = RPToHomogeneous(Rot, pos)
     assert(all(sizes(Rot) == [n, n]), ...
         "Matrix and vector sizes are not consistent");
 	
-    % Now put everything together into a homogeneous transformation *)
+    % Now put everything together into a homogeneous transformation
     hom = [[Rot,       pos];
            [zeros(1,3),  1]];
 end

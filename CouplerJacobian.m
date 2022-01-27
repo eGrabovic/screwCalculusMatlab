@@ -1,4 +1,7 @@
 function res = CouplerJacobian(fstring, pars, constraintlist, pointlist)
+% COUPLERJACOBIAN(fstring, pars, constraintlist, pointlist) returns...
+%   TODO
+
     fFKin  = ToExpression(fstring + "ToMat");
     fJac   = ToExpression(fstring + "ToSpatialJac");
     

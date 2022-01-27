@@ -1,4 +1,5 @@
 function xi_dim = xidim(xi)
+% TODO: what exactly is this?
 % Figure out the space dimension of a twist (private)
 
     assert(isvector(xi), "xi is not a vector");

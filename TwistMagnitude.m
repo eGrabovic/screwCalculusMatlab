@@ -1,5 +1,7 @@
 function mag = TwistMagnitude(xi)
-% Find the magnitude of a twist
+% TWISTMAGNITUDE(xi) gives magnitude MAG of screw corresponding to a twist
+%   XI.
+  
     assert(isvector(xi), "xi must be a vector");
 
     [v, w] = Partition(xi, 3);

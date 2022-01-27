@@ -1,4 +1,8 @@
 function jacobian = DHJacobBaseDyn(DHtable, Tb0, Tne, k)
+% DHJACOBBASEDYN(DHtable, Tb0, Tne, k) computes the DH spatial JACOBIAN 
+%   till the K-th joint with the needed empty columns stacked on the right,
+%   considering also the initial offset TB0 and final offset TNE.
+
     n = size(DHtable, 2);
 		     
     Jk  = [];    

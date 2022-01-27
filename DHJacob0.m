@@ -1,10 +1,10 @@
 function jacobian = DHJacob0(DHTable, upto)
-% JACOBFROMDH builds the Jacobian of the robot related to the supplied
-%     Denavit-Hartemberg DHTABLE. 
+% DHJACOB0(DHTable, upto) builds the JACOBIAN of the robot related to the 
+%   supplied Denavit-Hartemberg DHTABLE. 
 %
-%     If UPTO contains a non-negative integer lower than the number of
-%     joints inferrable from the table, the Jacobian built stops at the
-%     UPTO-th joint.                                                    
+%   If UPTO contains a non-negative integer lower than the number of
+%   joints inferrable from the table, the Jacobian built stops at the
+%   UPTO-th joint.                                                    
 	
     n = size(DHTable,1);
     J  = [];

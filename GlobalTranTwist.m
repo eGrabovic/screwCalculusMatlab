@@ -1,6 +1,8 @@
 function [xi, theta] = GlobalTranTwist(gStart, gEnd)
-% Calculation of the error twist xi_err and error angle theta_err such that:
-% TwistExp(xi_err, theta_err).gStart = gEnd
+% GLOBALTRANTWIST(gStart, gEnd) returns the twist error XI and angle error 
+%   THETA such that: TwistExp(xi,theta) * gStart = gEnd.
+%   TODO: how to insert formula?
+%   The xi coordinate are expressed in the global (identity) reference frame.
 
     assert(ismatrix(gStart), "First argument must be a matrix");
     assert(ismatrix(gEnd), "First argument must be a matrix");

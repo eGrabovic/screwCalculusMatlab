@@ -1,13 +1,13 @@
 function FKmat = DHFKine(varargin)
-% DHFKINE builds the Forward Kinematics Homogeneous matrix.
+% DHFKINE(varargin) builds the Forward Kinematics Homogeneous matrix FKMAT.
 %
-%     The main argument to pass is the Denavit-Hartemberg table, but the 
-%     function handles up to 4 arguments, adapting to the situation:
-%     1) only the table is supplied -> build entire Forward Kinematics
-%     2) table and an index, specifying the joint number at which to stop
-%     3) table, pre- and post- moltiplication matrix, for additional
-%        transformations after the (whole) Forward Kinematics
-%     4) all of the above
+%   The main argument to pass is the Denavit-Hartemberg table, but the 
+%   function handles up to 4 arguments, adapting to the situation:
+%   1) only the table is supplied -> build entire Forward Kinematics
+%   2) table and an index, specifying the joint number at which to stop
+%   3) table, pre- and post- moltiplication matrix, for additional
+%      transformations after the (whole) Forward Kinematics
+%   4) all of the above
 
 
     % Check number of arguments

@@ -1,5 +1,7 @@
 function axis = RotationAxis(Rotmat, theta)
-% Find the axis of a rotation matrix *)
+% ROTATIONAXIS(Rotmat, theta) returns the rotation axis AXIS of ROTMAT 
+%   in SO(3)  
+
     [nr, nc] = size(Rotmat);
 
     % Check to make sure that our input makes sense

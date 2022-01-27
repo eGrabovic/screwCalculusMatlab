@@ -1,4 +1,9 @@
 function bjac = QuatToBodyJac(quat)
+% QUATTOBODYJAC(quat) returns the Body Jacobian BJAC corresponding to the 
+%   unit quaternion QUAT (1-vector)
+%   If q = (q0, q1, q2, q3) --> w_b = bjac * dot{q}.
+% TODO: what is "1-vector"? 1 element?also, hoiw to add formulas?
+
     b0 = quat(1);
     b1 = quat(2);
     b2 = quat(3);

@@ -1,4 +1,11 @@
-function p = ExtractParameters(CGtable, Masslist, Tensortable) 
+function p = ExtractParameters(CGtable, Masslist, Tensortable)
+% EXTRACTPARAMETERS(CGtable, Masslist, Tensortable) returns a list P with 
+%   the inertia parameters reshaped according to the regressor formulation 
+%   for the supplied:
+%   - CGTABLE (pici table)
+%   - MASSLIST (list of link masses)
+%   - TENSORTABLE (table with link inertia tensors)
+
 	p = [];
 	n = size(CGtable,1);
 	

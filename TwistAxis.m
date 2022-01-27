@@ -1,4 +1,8 @@
 function [axis, angle] = TwistAxis(xi)
+% TWISTAXIS(xi) gives the axis AXIS of screw corresponding to a twist XI as
+%   and the relative ANGLE
+%   TODO: check if this is correct^
+
 % Find the axis of a twist
 
     assert(isvector(xi), "xi is not a vector");

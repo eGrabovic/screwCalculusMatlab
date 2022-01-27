@@ -1,5 +1,9 @@
 function res = NullBasis(A, independent)
-% the whole expression A(q1,q2,...) must be supplied
+% NULLBASIS(A, independent) returns a matrix RES whose columns span the 
+%   NullSpace of the input matrix A. The controls are the indexes of the 
+%   components of q_dot in the list INDEPENDENT
+
+% The whole expression A(q1,q2,...) must be supplied
     [m, n] = size(A);
     unit = eye(n - m);
     r = [1:n];   

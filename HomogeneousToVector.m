@@ -1,5 +1,5 @@
 function v = HomogeneousToVector(hom_v)
-% HomogeneousToVector(...) extracts the cartesian coordinates v from
+% HOMOGENEOUSTOVECTOR(hom_v) extracts the cartesian coordinates v from
 %   the homogeneous components HOM_V.
 %
 %   Example:

@@ -1,4 +1,7 @@
 function hom = TwistToHomogeneous(xi)
+% TWISTTOHOMOGENEOUS(xi) converts twist XI from a 6-element vector to a 4x4
+%   homogeneous matrix HOM.
+
 % Convert a twist to homogeneous coordinates
 
     assert(isvector(xi), "xi is not a vector");

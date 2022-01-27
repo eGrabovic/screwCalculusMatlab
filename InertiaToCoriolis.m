@@ -1,4 +1,9 @@
 function Cmat = InertiaToCoriolis(M, q, qp)
+% INERTIATOCORIOLIS(M, q, qp) computes the Coriolis matrix CMAT given:
+%   - the inertia matrix B
+%   - the joint variables Q
+%   - the joint variable derivatives QP
+
     n = size(M,1);
 
     % Brute force calculation

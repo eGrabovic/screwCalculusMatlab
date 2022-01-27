@@ -1,4 +1,9 @@
 function sjac = QuatToSpatialJac(quat)
+% QUATTOSPATIALJAC(quat) returns the Spatial Jacobian SJAC corresponding to
+%   the unit quaternion QUAT (1-vector).
+%   If q = (q0, q1, q2, q3), w_s = Js dot{q}."
+%   TODO: 1-vector? formulas?
+
     b0 = quat(1);
     b1 = quat(2);
     b2 = quat(3);

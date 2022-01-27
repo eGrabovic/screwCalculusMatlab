@@ -1,5 +1,9 @@
 function res = NullBasisNumerical(A, q0, independent)
-% only the head of the matrix has to be supplied
+% NULLBASISNUMERICAL(A, q0, independent) returns a matrix RES whose columns
+%   span the NullSpace of the input matrix A. The controls are the indexes
+%   of the components of q_dot in the list INDEPENDENT
+
+% Only the head of the matrix has to be supplied
     
     if ismatrix(A(q0))
         Aq0 = A(q0);

@@ -1,4 +1,7 @@
 function esp = TwistExp(xi, theta)
+% TWISTEXPE(xi, Theta) gives the matrix exponential ESP of a twist XI.
+%   Default value of THETA is 1.
+
 % Take the exponential of a twist
 % ! This only works in dimension 3 for now !
 

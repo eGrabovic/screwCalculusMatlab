@@ -1,5 +1,5 @@
 function mat = HomZ(theta, pos)
-% HOMZ(theta, pos) returns the homogeneous matrix generated through a
+% HOMZ(theta, pos) returns the homogeneous matrix MAT generated through a
 %   rotation of angle THETA around the Z-axis and a translation POS
 
 % TODO: if theta = 0 Rot=Id

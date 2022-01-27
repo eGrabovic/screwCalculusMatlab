@@ -1,4 +1,7 @@
 function qnorm = normalize(q)
+% NORMALIZE(q) ...
+% TODO: check and fill
+
     norm = q*q';
     eps = 10^(-14); % tolerance
 

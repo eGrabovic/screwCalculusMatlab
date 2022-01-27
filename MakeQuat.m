@@ -1,6 +1,9 @@
 function quat = MakeQuat(n, angle)
-%Warning: these are the reverse of conventional argument order:
-%change order once all is consistent to (angle, nhat).
+% MAKEQUAT(axis, angle) creates the unit quaternion QUAT given the unit 
+%   vector N of the axis and the ANGLE
+
+% WARNING: these are the reverse of conventional argument order;
+% change order once all is consistent to (angle, nhat). TODO?
 
     c = cos(angle/2);
     s = sin(angle/2);

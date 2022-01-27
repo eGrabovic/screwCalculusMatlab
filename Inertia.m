@@ -1,4 +1,11 @@
 function Bmat = Inertia(DHtable, CGtable, Masslist, Tensortable)
+% INERTIA(DHtable, CGtable, Masslist, Tensortable) returns matrix BMAT
+%   [B(q)] for the supplied: 
+%   - DHTABLE (Denavit-Hartemberg table)
+%   - GCTABLE (pici table)
+%   - MASSLIST (list of link masses)
+%   - TENSORTABLE (table with link inertia tensors)
+
     n = size(DHtable,1);
     
     Bmat = zeros(n);
@@ -8,7 +15,7 @@ function Bmat = Inertia(DHtable, CGtable, Masslist, Tensortable)
         R0k  = RigidOrientation(DHFKine(DHtable, k));
         Jk  =  CGJacob0Dyn(DHtable, CGtable, k);
         
-        % attenzione: questo Jacobiano è relativo al baricentro
+        % WARNING: this Jacobian refers to the barycenter
         
         Jvk =  Jk(1:3, :);
         Jok =  Jk(4:6, :);

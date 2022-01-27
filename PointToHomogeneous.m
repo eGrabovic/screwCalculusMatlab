@@ -1,5 +1,6 @@
 function hom_p = PointToHomogeneous(p)
-% Convert a point into homogeneous coordinates
+% POINTTOHOMOGENEOUS(q) gives the homogeneous representation HOM_P of a 
+%   point P
 
     % Check to make sure the dimensions of the args make sense
     assert(isvector(p), "The provided argument is not an array");

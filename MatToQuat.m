@@ -1,6 +1,9 @@
 function quat = MatToQuat(mat)
-% Warning: these are the reverse of conventional argument order:
-% change order once all is consistent to (angle, nhat).
+% MATTOQUAT(R) returns the unit quaternion QUAT associated with the 
+%   rotation matrix MAT
+
+% WARNING: these are the reverse of conventional argument order;
+% change order once all is consistent to (angle, nhat). TODO?
     diag_sum = trace(mat);
 
     if diag_sum > 0

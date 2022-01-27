@@ -1,4 +1,6 @@
 function pitch = TwistPitch(xi)
+% TWISTPITCH(xi) gives the pitch PITCH of screw corresponding to a twist XI
+
 % Find the pitch associated with a twist in R^3
 
     assert(isvector(xi), "xi is not a vector");

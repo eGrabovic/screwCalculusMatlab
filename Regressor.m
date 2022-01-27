@@ -1,4 +1,16 @@
 function Y = Regressor(DHtable, q, qp, v, vp, t, g0, k)
+% REGRESSOR(DHtable, q, qp, v, vp, t, g0, k) directly computes the 
+%   regressor for the supplied: 
+%   - DHTABLE (Denavit-Hartemberg table)
+%   - Q (configuration)
+%   - QP (velocity)
+%   - V (reference velocity)
+%   - VP (reference acceleration)
+%   - T (independent var)
+%   - G0 (components of gravity in {0})
+%   - K (contribute for the k-th link). 
+%   If k is omitted, the complete regressor is returned
+
     R0k  = RigidOrientation(DHFKine(DHtable, k));
     R0kT = R0k';
 

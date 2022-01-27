@@ -1,8 +1,11 @@
 function or_err = MatToVectParam(Rotmat)
-% MATTOVECT(R_ACT) returns the orientation error OR_ERR = r*sin(theta), where
-%   r and theta are the components of the axis-angle parametrization.
-%   OR_EE represents also the axis form of the skew-symmetrix matrix 
-%   R_SS = (1/2)*(R - R^T).
+% MATTOVECTPARAM(R) returns the orientation error OR_ERR related to the
+%   SO(3) parametrization ROTMAT, such that 
+%   or_err = r * sin(theta)
+%   where r and theta are the components of the axis angle parametrization.
+%   OR_ERR represents also the axis form of the skew-symm matrix 
+%   R_SS = (1/2) * (R - R^T).
+% TODO: how to add formulas?
 
     % TODO: how to check if it's a rotation matrix?
     assert(ismatrix(Rotmat) && all(size(Rotmat) == [3,3]),...

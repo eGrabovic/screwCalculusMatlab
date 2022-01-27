@@ -1,4 +1,6 @@
-function rot = QQTo4DRot(p, q)  
+function rot = QQTo4DRot(p, q)
+% QQTO4DROT(p, q) returns the 4D rotation matrix ROT from two unit 
+%   quaternions P and Q
 
   q0 = q(1);
   q1 = q(2);

@@ -1,5 +1,6 @@
 function mat = NDMatrix(S, q, q0)
-% Numerical derivative of a matrix w.r.t. q at numerical value q0
+% NDMATRIX(S, q, q0) returns the numerical derivative MAT of the given 
+%   matrix S w.r.t. S at numerical value Q0
 		
     r = size(q,1);
     [m, n] = size(S(q0));

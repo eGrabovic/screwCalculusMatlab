@@ -1,4 +1,6 @@
 function pos = PosFromHom(mat)
+% RIGIDPOSITION(g) extracts position vector POS from the matrix MAT
+%   TODO: changed name for clarity; keep it?
     [nr, nc] = size(mat);
     
     % Check to make sure that we were passed a square matrix

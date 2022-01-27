@@ -3,7 +3,7 @@ function or_err = FramesToVect(R_act, R_des)
 %   R_DES (desired) w.r.t. R_ACT (actual) in the spatial frame where both 
 %   R_ACT and R_DES are expressed.
 %
-%   Examples...
+%   Examples: TODO
 %
 %   Input
 %       R_act:  3x3 rotation matrix

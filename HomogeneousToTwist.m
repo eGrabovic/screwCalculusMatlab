@@ -1,5 +1,6 @@
 function twist = HomogeneousToTwist(A)
-% Convert a homogeneous matrix to a twist
+% HOMOGENEOUSTOTWIST(A) converts A from a 4x4 matrix to a 6 element vector
+%   TWIST.
 %! This only works in dimensions 2 and 3 for now!
 
     % Check to make sure that our input makes sense

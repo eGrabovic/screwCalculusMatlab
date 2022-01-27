@@ -1,6 +1,6 @@
-function mat = EulToMat(EU_angles, type, deg_bool) % consider a 'degree' argument
-% EulToMat(EU_angles, type) returns the Rotation matrix MAT related to the
-%   specified angles EU_ANGLES and parametrization TYPE.
+function mat = EulToMat(EU_angles, type, deg_bool)
+% EULTOMAT(EU_angles, type, deg_bool) returns the Rotation matrix MAT 
+%   related to the specified angles EU_ANGLES and parametrization TYPE.
 %   Valid parametrizations consist of a combination of 'X', 'Y', 'Z'
 %   (uppercase).
 %   If a boolean DEG_BOOL is specified as 'true', input angles will be

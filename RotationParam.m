@@ -1,4 +1,7 @@
 function [axis, theta] = RotationParam(Rotmat)
+% ROTATIONPARAM(Rotmat) returns the rotation axis AXIS the and amount of 
+%   rotation THETA of ROTMAT in SO(3)
+  
     [nr, nc] = size(Rotmat);
 
     % Check to make sure that our input makes sense

@@ -1,5 +1,6 @@
 function hom_v = VectorToHomogeneous(v)
-% Convert a point into homogeneous coordinates
+% VECTORTOHOMOGENEOUS(v) gives the homogeneous representation HOM_V of a 
+%   vector V.
 
     % Check to make sure the dimensions of the args make sense
     assert(isvector(v), "The provided argument is not an array");

@@ -1,4 +1,6 @@
 function quat = RotToQuatSym(mat)
+% TODO: what is this?
+
 % Warning: these are the reverse of conventional argument order:
 % change order once all is consistent to (angle, nhat)
     

@@ -1,6 +1,7 @@
 function twist = PrismaticTwist(q, w)
-% Gives Xi 6 vector given a point on axis and axis unit vector
-% for a Prismatic Joint
+% PRISMATICTWIST(q,w) builds the 6-elements vector TWIST corresponding 
+%   to point Q on the axis with unit vector W for a prismatic joint
+
     mat = [w, [0,0,0]];
     twist = reshape(mat.',1,[]);
 end

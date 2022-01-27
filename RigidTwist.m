@@ -1,5 +1,7 @@
 function [twist, theta] = RigidTwist(g)
-% Find the twist which generates a rigid motion
+% RIGIDTWIST(g) extracts a 6-elements vector TWIST from G and the angle 
+%   THETA that generates G, so it finds the twist which generates the 
+%   rigid motion expressed by the supplied matrix G
     
     assert(ismatrix(g), "g is not a matrix");
 
