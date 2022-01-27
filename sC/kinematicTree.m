@@ -1,7 +1,8 @@
 classdef kinematicTree < handle
-    %
-    % obj = kinematicTree(p, s, k, mu, ni, gT, h)
-    %
+%
+% obj = kinematicTree(p, s, k, mu, ni, gT, h)
+%
+% TODO: help for every member function
     properties
         
         Nb         % number of bodies
@@ -134,10 +135,9 @@ classdef kinematicTree < handle
         end
         
         function FWKin(this, q)
-            %
-            % FWKin(this, q)
-            % forward kinematics computed with the local POE formulation
-            % all the intermediate transform matrices are stored 
+        % FWKIN(this, q) computes the forward kinematics with the local POE
+        %   formulation. All the intermediate transform matrices are stored.
+
             for i = 1:this.Nb
              this.G_localJ{i} = kinematicTree.jointFun(q(i), this.h(i)); % twist exponential joint formulation
              this.G_local{i} = this.Goff(:,:,i)*this.G_localJ{i};
@@ -152,12 +152,13 @@ classdef kinematicTree < handle
         end
         
         function Jb = bodyJacobian(this, numNode)
-            % body jacobian of numNode w.r.t. the root in frame numNode(and thus his pole)
-            % for how we computed the FWKin the B_0,j matrix is just
-            % G_globalJ{i}
-            % we do not actually compute the expTw(twist, q) here but
-            % borrow from the FWKin computations.
-            % the jacobian uses the FWKin joints values
+        % BODYJACOBIAN(this, numNode) computes the body jacobian JB of 
+        %   NUMNODE w.r.t. the root in frame {numNode} (and thus its pole).
+        %   Because of how we computed the FWKin, the [B_0, j] matrix is 
+        %   just G_globalJ{i}.
+        %   We do not really compute the expTw(twist, q) here, instead we
+        %   borrow from the FWKin computations.
+        %   The jacobian uses the FWKin joints values.
             
             subTree = this.k{numNode};
             n = length(subTree);
@@ -188,9 +189,9 @@ classdef kinematicTree < handle
 %         end
         
         function plotInit(this, varargin)
-            %
-            %
-            %
+        %
+        %
+        %
             
             if isempty(varargin)
                 figure('color', 'w'); hold on; axis equal
@@ -255,9 +256,9 @@ classdef kinematicTree < handle
         end
         
         function updatePlot(this)
-            %
-            % 
-            %
+        %
+        % 
+        %
             
             % check if plot initialization still exists
             if isempty(this.graphics) || ~isvalid(this.graphics.axes)
@@ -281,9 +282,9 @@ classdef kinematicTree < handle
         end
         
         function [tau, F] = RNEAdyn(this, q, qd, qdd, V0, V0d, Fext)
-            %
-            %
-            %
+        %
+        %
+        %
             
             %% forward recursive computation
             % posture computation
@@ -333,12 +334,12 @@ classdef kinematicTree < handle
         end
         
         function qdd = ABAdyn(this, q, qd, tau, V0, V0d, Fext)
-            %
-            % q = istantaneous joint configuration
-            % qd = istantaneous joint velocity
-            % V0 = istantaneous base velocity
-            % V0d = istantaneous base acceleration
-            % tau = istantaneous joint action (forces/moments)
+        %
+        % q:    istantaneous joint configuration
+        % qd:   istantaneous joint velocity
+        % V0:   istantaneous base velocity
+        % V0d:  istantaneous base acceleration
+        % tau:  istantaneous joint action (forces/moments)
             
 %             cl = class(q);
             % compute posture
@@ -404,12 +405,12 @@ classdef kinematicTree < handle
         end
         
         function qdd = ABAdynCasadi(this, q, qd, tau, V0, V0d, Fext)
-            %
-            % q = istantaneous joint configuration
-            % qd = istantaneous joint velocity
-            % V0 = istantaneous base velocity
-            % V0d = istantaneous base acceleration
-            % tau = istantaneous joint action (forces/moments)
+        %
+        % q:    istantaneous joint configuration
+        % qd:   istantaneous joint velocity
+        % V0:   istantaneous base velocity
+        % V0d:  istantaneous base acceleration
+        % tau:  istantaneous joint action (forces/moments)
             
             cl = class(q);
             % compute posture

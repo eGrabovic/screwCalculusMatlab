@@ -1,16 +1,15 @@
 function Jb = BodyJac(gst0,varargin)
+% BODYJAC(gst0,varargin) computes the body jacobian JB of a serial robot.
+%  
+%   Input
+%       gst0:       initial configuration homogeneous matrix
 %
-% Jb = BodyJac(gst0,{Y1,var1},{Y2,var2},...,{Yn,varn});
-% Funzione che calcola lo Jacobiano Body di un seriale
+%       varargin :  expects [{Y1,var1},{Y2,var2},...,{Yn,varn}] the same
+%                   number of 1x2 cells as the number of joints of the robot.
+%                   Yn: n-th joint's unit twist
+%                   varn: n-th joint variable
 %
-%
-% varargin : {Yn,varn} inserire tante celle 1x2 quanti sono i
-% giunti del seriale;
-% Yn : n esimo twist unitario del n esimo giunto;
-% varn : n esima variable di giunto;
-%
-% gst0: configurazione di riferimento iniziale
-%
+
 [~, n] = size(varargin);
 cl = class(varargin{2}{2});
 g = gst0;

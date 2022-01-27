@@ -1,8 +1,7 @@
 function JacDot = bodyJacDerivative(jac, qdot)
-
-%
-% Js_dot = SpatialJac(Jac, qdot);
-% Funzione che calcola la derivata dello Jacobiano body di un seriale
+% TODO: why does this refer to spatialjac?
+% SPATIALJAC(Jac, qdot) computes the derivate of the body Jacobian JAC of
+%   the robot w.r.t. the joint variables derivate QDOT.
 
 n = size(jac, 2);
 

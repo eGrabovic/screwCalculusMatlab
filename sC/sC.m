@@ -1,54 +1,51 @@
 classdef sC
-    % Classe che funge da "libreria" (pseudo screwCulus) per varie
-    % funzioni utili da poter utilizzare per descrivere la cinematica di
-    % una macchina utensile per ruote spiroconiche.
-    %
-    % FUNZIONI (richiamabili come METODI: sC.metodo() ):
-    %
-    % N.B. Si può velocizzare il richiamo della libreria rinominando nel
-    % workspace la classe (es. SC = sC; SC.hat() richiama la
-    % funzione hat).
-    %
-    % hat(vector)
-    %
-    % rotX(alpha) ( quello base di MatLab non consente di effettuare
-    % calcolo simbolico)
-    %
-    % rotY(alpha)
-    %
-    % rotZ(alpha)
-    %
-    % hom_mat(rotationMatrix,displacement)
-    %
-    % hom_mat_inv(Gst) inverse of a homog. matrix transf. Gst
-    %
-    % adjoint(rotationMatrix,displacement) or adjoint(homogeneousmatrix)
-    %
-    % expSkew(axis,th) -> exp(omegahat*theta)
-    %
-    % unitTwist(jointType,axis,q) (NO GIUNTI ELIC.) Reference unit Twist
-    %
-    % expTw(unitTwist,th) ( NO GIUNTI ELIC.) Twist Exponential
-    %
-    % FWKin(gst0,{Y1,var1},{Y2,var2},...,{Yn,varn}) Forward Kinematics
-    %
-    % AD_FWKin(gst0,{Y1,var1},{Y2,var2},...,{Yn,varn}) Automatic Diff.
-    % Forward Kinematics (automatic diff. variable on join vars).
-    %
-    % SpJac({Y1,var1},{Y2,var2},...,{Yn,varn}) Spatial Jacobian
-    %
-    % BodyJac(gst0,{Y1,var1},{Y2,var2},...,{Yn,varn}) Body Jacobian
-    %
+% Class that serves as "library" (pseudo screwCalculus) for different
+% functions useful to compute the kinematics of a shaping machine for
+% spiral bevel wheels.
+%
+%       FUNCTIONS (callable as METHODS: sC.method() )
+%
+%   N.B. You can improve calling speed of library functions renaming the
+%   class in the workspace (i.e. SC = sC; SC.hat() calls the hat() function)
+%
+% - hat(vector)
+%
+% - rotX(alpha) (the MATLAB one does not allow for symbolic computations)
+%
+% - rotY(alpha)
+%
+% - rotZ(alpha)
+%
+% - hom_mat(rotationMatrix, displacement)
+%
+% - hom_mat_inv(Gst): inverse of a homog. matrix transf. Gst
+%
+% - adjoint(rotationMatrix,displacement) or adjoint(homogeneousmatrix)
+%
+% - expSkew(axis,th) -> exp(omegahat*theta)
+%
+% - unitTwist(jointType,axis,q) (NO HELIC. JOINTS): reference unit Twist
+%
+% - expTw(unitTwist,th) ( NO HELIC. JOINS): twist Exponential
+%
+% - FWKin(gst0,{Y1,var1},{Y2,var2},...,{Yn,varn}): forward Kinematics
+%
+% - AD_FWKin(gst0,{Y1,var1},{Y2,var2},...,{Yn,varn}): automatic diff.
+%   and Forward Kinematics (automatic diff. variable on joint vars).
+%
+% - SpJac({Y1,var1},{Y2,var2},...,{Yn,varn}): spatial Jacobian
+%
+% - BodyJac(gst0,{Y1,var1},{Y2,var2},...,{Yn,varn}): body Jacobian
+%
+%   TODO: copy external help function or what?
+
     methods(Static)
         
         function X = hat(v)
-            %
-            % trasforma un vettore colonna R3 in forma matriciale hat R3x3
-            % antisimmetrica
-            %
-            % oppure trasforma un twist colonna R3 in forma omogenea hat
-            % R4x4
-            %
+        % HAT(vec) transforms a R3 column vector VEC in its 'hat' R3x3
+        % antisymmetric matrix form, or transforms a R3 column twist vector in a
+        % homogeneous 'hat' R4x4 matrix.  
+        
             if all(size(v) ~= [3,1]) || all(size(v) ~= [6,1])
                 error('v requires to be a 3 x 1 matrix (vector)')
             end
@@ -99,18 +96,17 @@ classdef sC
         end
         
         function R = diffRotZ2D(alpha)
-           %
-           %
-           %
+        %
+        %
+        %
             R = [-sin(alpha) -cos(alpha);cos(alpha) -sin(alpha)];
            
         end
         
         function Gst = hom_mat(rotm,disp)
-            %
-            % Data matrice di rotazione e vettore di traslazione riporta la
-            % matrice di rototraslazione omogenea associata
-            %
+        % HOM_MAT(rotm, disp) returns the homogeneous rototranslational matrix OUT
+        %   related to the rotation matrix ROTM and the displacement DISP.
+
             if all(size(rotm) ~= [3,3]) || all(size(disp) ~= [3,1])
                 error('rotation matrix requires to have 3x3 dimension and the displacement vector requires to be a 3x1 matrix')
             end
@@ -118,10 +114,8 @@ classdef sC
         end
         
         function GstInv = hom_mat_inv(Gst)
-            %
-            % Computes the inverse of a homogeneous transormation Gst into
-            % Gst^-1
-            %
+        % HOM_MAT_INV(Gst) computes the inverse GSTINV of a homogeneous matrix GST.
+
             if all(size(Gst) ~= [4,4])
                 error('Homogenous transformation matrix requires to have 4x4 dimension')
             end
@@ -131,9 +125,9 @@ classdef sC
         end
         
         function GstInv = hom_mat_inv2D(Gst)
-           %
-           %
-           %
+        %
+        %
+
             Rst = Gst(1:2,1:2);
             dst = Gst(1:2,3);
             GstInv = [Rst.',-Rst.'*dst;0,0,1];

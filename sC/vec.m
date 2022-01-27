@@ -1,7 +1,5 @@
 function X = vec(Tw)
-%
-% transforms a hat form twist into the vec form twist: R_4x4 -> R_6
-%
+% VEC(Tw) transforms a hat form twist TW into the vec form twist X: R_4x4 -> R_6
 %
 
 if isa(Tw, 'ADvar')

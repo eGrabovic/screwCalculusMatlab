@@ -1,4 +1,5 @@
 function out = axisAngleToQuat(theta, n)
+% TODO
 out = zeros(4,1);
 out(1) = cos(theta/2);
 out(2) = sin(theta/2).*n(1);

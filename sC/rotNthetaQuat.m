@@ -1,4 +1,5 @@
 function out = rotNthetaQuat(n, theta)
+% TODO
 
 p0 = cos(theta./2);
 p1 = sin(theta./2).*n(1);

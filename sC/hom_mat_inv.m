@@ -1,8 +1,5 @@
 function GstInv = hom_mat_inv(Gst)
-%
-% Computes the inverse of a homogeneous transormation Gst into
-% Gst^-1
-%
+% HOM_MAT_INV(Gst) computes the inverse GSTINV of a homogeneous matrix GST.
 
 Rst = Gst(1:3,1:3);
 dst = Gst(1:3,4);

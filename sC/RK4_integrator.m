@@ -1,7 +1,5 @@
 function out = RK4_integrator(x, u, xdot, dt, Nsteps)
-%
-%
-%
+% TODO
 
 h = dt./Nsteps;
 

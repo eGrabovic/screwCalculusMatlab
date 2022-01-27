@@ -1,8 +1,6 @@
 function JacDot = spatialJacDerivative(jac, qdot)
-
-%
-% Js_dot = SpatialJac(Jac, qdot);
-% Funzione che calcola la derivata dello Jacobiano spatial di un seriale
+% SPATIALJACDERIVATIVE(jac, qdot) computes the derivate JACDOT of the 
+%   spatial Jacobian of a robot.
 
 n = size(jac, 2);
 

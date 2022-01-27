@@ -1,4 +1,5 @@
 function out = quatToRot(Quat)
+% TODO
 
 q0 = Quat(1);
 q = zeros(3,1, class(Quat(1)));

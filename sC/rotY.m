@@ -1,8 +1,6 @@
 function R = rotY(alpha)
-%
-% funzione matrice di rotazione attorno asse Y per acconsentire
-% il calcolo simbolico
-%
+% ROTY(alpha) computes the rotation matrix R along the Y-axis.
+
 if isa(alpha, 'ADvar')
     T = rotY(alpha.val);
     Der = hat([0;1;0])*T.*alpha.der;

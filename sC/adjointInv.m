@@ -1,4 +1,6 @@
 function X = adjointInv(Gst)
+
+% TODO: this is the help of ADJOINT; scrap it and redo it.
 %
 % adjoint(Gst)
 % trasformata aggiunta di Gst. Matrice 6x6 che può trasformare
@@ -12,6 +14,7 @@ R = Gst(1:3,1:3).';
 d = Gst(1:3,4);
 X = [R,-R*hat(d);zeros(3,3),R];
 
+% TODO: needed?
 % for codegen with ADvar
 
 % Rval = Gst.val(1:3,1:3);

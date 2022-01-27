@@ -1,19 +1,20 @@
 function gst = FWKin(gst0,varargin)
+% AD_FWKIN(gst0,varargin) computes the serial cinematic through Global 
+%   P.O.E. parametrization and its derivate through Automatic 
+%   Differentiation technics.
 %
-% Gst = FWKin(gst0,{Y1,var1},{Y2,var2},...,{Yn,varn});
-% Funzione che calcola la cinematica seriale tramite
-% parametrizzazione GLOBAL P.O.E.
+%   Input
+%       gst0:       spatial-tool offset at initial conditions
 %
-% INPUTs:
+%       varargin:   expects [{Y1,var1},{Y2,var2},...,{Yn,varn}] the same
+%                   number of 1x2 cells as the number of joints of the
+%                   robot.
+%                   Yn : n-th joint's unit twist unitario;
+%                   varn : n-th joint variable as a ADvar instance
 %
-% gst0 : offset tra spatial e tool quando i giunti sono nelle
-% condizioni iniziali.
+%   Output
 %
-% varargin : {Yn,varn} inserire tante celle 1x2 quanti sono i
-% giunti del seriale;
-% Yn : n esimo twist unitario del n esimo giunto;
-% varn : n esima variable di giunto;
-%
+
 n = length(varargin);
 gst = expTw(varargin{1}{1},varargin{1}{2});
 for i = 2 : n

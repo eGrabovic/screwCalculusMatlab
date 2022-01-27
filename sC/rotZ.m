@@ -1,8 +1,5 @@
 function R = rotZ(alpha)
-%
-% funzione matrice di rotazione attorno asse Z per acconsentire
-% il calcolo simbolico
-%
+% ROTZ(alpha) computes the rotation matrix R along the Z-axis.
 
 if isa(alpha, 'ADvar')
     T = rotZ(alpha.val);
