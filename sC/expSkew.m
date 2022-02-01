@@ -3,79 +3,72 @@ function X = expSkew(axis, th)
 %   X = e^(axis * th)
 %   with 
 %   - AXIS: axis versor
-%   - TH:  angle
+%   - TH:   angle
 %
 %   This uses Rodriguez' formula if the supplied axis is generic, and
 %   copies any elementary rotation if the axis coincides with one of the
 %   main axis (to improve performance).
 
+    assert(isnumeric(theta), "Provided angle must be a rumeric value");
+
+    threshold = 1e-8;
+
     if all(isnumeric(axis)) == true
-        if abs(axis.'*axis) -1 >= 1e-8
-            error('axis requires to be a versor');
+        % Check if axis is a unit vector within an acceptable threshold
+        if abs(axis.'*axis) -1 >= threshold % Square of norm
+            error('axis must be a versor');
         end
-        if abs(axis(1)) <= 1e-8 && abs(axis(2)) <= 1e-8
+
+        abs_x = abs(axis(1));
+        abs_y = abs(axis(2));
+        abs_z = abs(axis(3));
+    
+        % Check if the Z-axis is specified, within a threshold
+        if abs_x <= threshold && abs_y <= threshold
+            % Depending on the angle sign
+            X = rotZ((2*sign(axis(3))-1) * th);
             
-            if axis(3) > 0
-                
-                X = rotZ(th);
-                
-            elseif axis(3) < 0
-                
-                X = rotZ(-th);
-            end
+        % Check if the X-axis is specified, within a threshold
+        elseif abs_y <= threshold && abs_z <= threshold
+            % Depending on the angle sign
+            X = rotX((2*sign(axis(1))-1) * th);
             
-        elseif abs(axis(2)) <= 1e-8 && abs(axis(3)) <= 1e-8
-            
-            if axis(1) > 0
-                
-                X = rotX(th);
-                
-            elseif axis(1) < 0
-                
-                X = rotX(-th);
-            end
-            
-        elseif abs(axis(1)) <= 1e-8 && abs(axis(3)) <= 1e-8
-            
-            if axis(2) > 0
-                
-                X = rotY(th);
-                
-            elseif axis(2) < 0
-                
-                X = rotY(-th);
-            end
-        else
+        % Check if the Y-axis is specified, within a threshold
+        elseif abs_x <= threshold && abs_z <= threshold
+            % Depending on the angle sign
+            X = rotY((2*sign(axis(2))-1) * th);
+
+        else % no particular axis has been provided
+            % Use Rodriguez' formula
             axisHat = hat(axis);
-            X = eye(3) + axisHat*sin(th) + axisHat*axisHat*(1 - cos(th));
-            %rodriguez formula
+            X = eye(3) + axisHat * sin(th) + ...
+                axisHat * axisHat * (1 - cos(th));
         end
         
-    else
-        if abs(double(axis(1))) <= 1e-8 && abs(double(axis(2))) <= 1e-8
-            
-            if double(axis(3)) > 0
-                X = rotZ(th);
-            elseif double(axis(3)) < 0
-                X = rotZ(-th);
-            end
-        elseif abs(double(axis(1))) <= 1e-8 && abs(double(axis(3))) <= 1e-8
-            
-            if double(axis(2)) > 0
-                X = rotY(th);
-            elseif double(axis(2)) < 0
-                X = rotY(-th);
-            end
-        elseif abs(double(axis(2))) <= 1e-8 && abs(double(axis(3))) <= 1e-8
-            
-            if double(axis(1)) > 0
-                X = rotX(th);
-            elseif double(axis(1)) < 0
-                X = rotX(-th);
-            end
-        else
-            X = eye(3) + hat(axis)*sin(th) + hat(axis)*hat(axis)*(1 - cos(th));
+    else % TODO: which types to consider?
+
+        % TODO: check if data can be converted to double
+
+        abs_x = abs(double(axis(1)));
+        abs_y = abs(double(axis(2)));
+        abs_z = abs(double(axis(3)));
+
+        if abs_x <= threshold && abs_y <= threshold
+            % Depending on the angle sign
+            X = rotZ((2*sign(double(axis(3))-1)) * th);
+
+        elseif abs_x <= threshold && abs_z <= threshold
+            % Depending on the angle sign
+            X = rotY((2*sign(double(axis(2))-1)) * th);
+
+        elseif abs_y <= threshold && abs_z <= threshold
+            % Depending on the angle sign
+            X = rotX((2*sign(double(axis(1))-1)) * th);
+
+        else % no particular axis has been provided
             % Rodriguez formula
+            X = eye(3) + hat(axis) * sin(th) + ...
+                hat(axis) * hat(axis) * (1 - cos(th));
         end
     end
 end

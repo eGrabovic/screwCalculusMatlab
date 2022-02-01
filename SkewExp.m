@@ -4,6 +4,9 @@ function res = SkewExp(S, theta)
 
 % Matrix exponential for a skew symmetric matrix or a vector
 
+% TODO: this is an alternative to expSkew that directly uses a Skew matrix;
+%   change name?
+
     assert(isSkew(S), "Provided matrix must be a skew matrix");
     assert(isnumeric(theta), "Provided angle must be a rumeric value");
 
