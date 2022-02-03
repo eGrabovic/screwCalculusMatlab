@@ -1,31 +1,52 @@
 function E = expTw(unitTwist,th)
 % EXPTW(unitTwist, th) computes the exponential E of a twist UNITTWIST w.r.t.
 %   the joint variable TH.
+%   Allows for ADvar class TH argument.
+
+    threshold = 1e-6;
     
+    % Handle th as an ADvar instance
     if isa(th, 'ADvar')
        E = expTw(unitTwist, th.val);
        E = ADvar(E, hat(unitTwist)*E.*th.der);
        return
     end
     
+    % Standard case
     if all(isnumeric(unitTwist)) == true
-        if abs(unitTwist(4)) <= 1e-6 && abs(unitTwist(5)) <= 1e-6 && abs(unitTwist(6)) <= 1e-6 % prismatic joint
+
+        % Prismatic joint
+        if abs(unitTwist(4)) <= threshold && ...
+           abs(unitTwist(5)) <= threshold && ...
+           abs(unitTwist(6)) <= threshold
             
-            axis = [unitTwist(1);unitTwist(2);unitTwist(3)];
+            % Extract translational components
+            axis = xitov(unitTwist);
+            
+            % Make sure that we got a real twist
+            assert(all(size(axis) ~= 0), ...
+                   "The provided vector is not a real twist");
+
             R = eye(3);
-            d = axis*th;
+            d = axis * th;
             
-        else % revolute joint
+        else % Revolute joint
             
-            axis = [unitTwist(4);unitTwist(5);unitTwist(6)];
-            v = [unitTwist(1);unitTwist(2);unitTwist(3)];
-            q = -cross(v,axis);
-            R = expSkew(axis,th);
-            d =(eye(3) - R)*q;
+            % Extract angular and translational components
+            axis = xitow(unitTwist);
+            v = xitov(unitTwist);
+
+            % Make sure that we got a real twist
+            assert(all(size(axis) ~= 0) && all(size(v) ~= 0), ...
+                   "The provided vector is not a real twist");
+
+            q = -cross(v, axis);
+            R = expSkew(axis, th);
+            d = (eye(3) - R) * q; % TODO: + (axis*(axis'*v)*th?
             
         end
-%                 E = hom_mat(R,d);
-        E = [R d; 0 0 0 1];
+
+        E = hom_mat(R, d);
 
     end
 end
