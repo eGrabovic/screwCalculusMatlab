@@ -1,8 +1,6 @@
 function ang_twist = xitow(xi)
 % XITOW(xi) gives the angular part ANG_TWIST of twist XI.
 
-% Extract the angular portion of a twist (private)
-
     assert(isvector(xi), "Input xi must be a vector");
 
     n = xidim(xi);
