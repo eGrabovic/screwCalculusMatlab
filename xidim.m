@@ -1,6 +1,13 @@
 function xi_dim = xidim(xi)
-% TODO: what exactly is this?
-% Figure out the space dimension of a twist (private)
+% XIDIM returns the space dimension XI_DIM of a twist vector XI.
+%   Input
+%       xi:     twist vector
+%   Output
+%       xi_dim: space dimension of xi
+%
+%   Example
+%       xidim(zeros(6,1)) --> 3      (meaning xi is in R3)
+%       xidim(zeros(3,1)) --> 2
 
     assert(isvector(xi), "xi is not a vector");
 

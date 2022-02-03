@@ -1,7 +1,5 @@
 function lin_twist = xitov(xi)
-% XITOV(xi) gives the translational part LIN_TWIST of twist XI.
-
-% Extract the linear portion of a twist (private)
+% XITOV(xi) gives the translational part LIN_TWIST of twist XI.s
 
     assert(isvector(xi), "Provided xi must be a vector");
     n = xidim(xi);
