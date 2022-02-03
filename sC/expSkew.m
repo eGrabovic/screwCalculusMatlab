@@ -1,6 +1,6 @@
-function X = expSkew(axis, th)
-% EXPSKEW(axis, th) computes the exponenxial X such that 
-%   X = e^(axis * th)
+function Xexp = expSkew(axis, th)
+% EXPSKEW(axis, th) computes the exponenxial Xexp such that 
+%   Xexp = e^(axis * th)
 %   with 
 %   - AXIS: axis versor
 %   - TH:   angle
@@ -9,11 +9,14 @@ function X = expSkew(axis, th)
 %   copies any elementary rotation if the axis coincides with one of the
 %   main axis (to improve performance).
 
+% TODO: how to add formulas?
+
     assert(isnumeric(theta), "Provided angle must be a rumeric value");
 
     threshold = 1e-8;
 
     if all(isnumeric(axis)) == true
+
         % Check if axis is a unit vector within an acceptable threshold
         if abs(axis.'*axis) -1 >= threshold % Square of norm
             error('axis must be a versor');
@@ -24,24 +27,24 @@ function X = expSkew(axis, th)
         abs_z = abs(axis(3));
     
         % Check if the Z-axis is specified, within a threshold
-        if abs_x <= threshold && abs_y <= threshold
+        if checkZeroThreshold([abs_x, abs_y], threshold)
             % Depending on the angle sign
-            X = rotZ((2*sign(axis(3))-1) * th);
+            Xexp = rotZ((2*sign(axis(3))-1) * th);
             
         % Check if the X-axis is specified, within a threshold
-        elseif abs_y <= threshold && abs_z <= threshold
+        elseif checkZeroThreshold([abs_y, abs_z], threshold)
             % Depending on the angle sign
-            X = rotX((2*sign(axis(1))-1) * th);
+            Xexp = rotX((2*sign(axis(1))-1) * th);
             
         % Check if the Y-axis is specified, within a threshold
-        elseif abs_x <= threshold && abs_z <= threshold
+        elseif checkZeroThreshold([abs_x, abs_z], threshold)
             % Depending on the angle sign
-            X = rotY((2*sign(axis(2))-1) * th);
+            Xexp = rotY((2*sign(axis(2))-1) * th);
 
         else % no particular axis has been provided
             % Use Rodriguez' formula
             axisHat = hat(axis);
-            X = eye(3) + axisHat * sin(th) + ...
+            Xexp = eye(3) + axisHat * sin(th) + ...
                 axisHat * axisHat * (1 - cos(th));
         end
         
@@ -53,21 +56,21 @@ function X = expSkew(axis, th)
         abs_y = abs(double(axis(2)));
         abs_z = abs(double(axis(3)));
 
-        if abs_x <= threshold && abs_y <= threshold
+        if checkZeroThreshold([abs_x, abs_y], threshold)
             % Depending on the angle sign
-            X = rotZ((2*sign(double(axis(3))-1)) * th);
+            Xexp = rotZ((2*sign(double(axis(3))-1)) * th);
 
-        elseif abs_x <= threshold && abs_z <= threshold
+        elseif checkZeroThreshold([abs_x, abs_z], threshold)
             % Depending on the angle sign
-            X = rotY((2*sign(double(axis(2))-1)) * th);
+            Xexp = rotY((2*sign(double(axis(2))-1)) * th);
 
-        elseif abs_y <= threshold && abs_z <= threshold
+        elseif checkZeroThreshold([abs_y, abs_z], threshold)
             % Depending on the angle sign
-            X = rotX((2*sign(double(axis(1))-1)) * th);
+            Xexp = rotX((2*sign(double(axis(1))-1)) * th);
 
         else % no particular axis has been provided
             % Rodriguez formula
-            X = eye(3) + hat(axis) * sin(th) + ...
+            Xexp = eye(3) + hat(axis) * sin(th) + ...
                 hat(axis) * hat(axis) * (1 - cos(th));
         end
     end

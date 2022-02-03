@@ -2,8 +2,6 @@ function E = expTw(unitTwist,th)
 % EXPTW(unitTwist, th) computes the exponential E of a twist UNITTWIST w.r.t.
 %   the joint variable TH.
 %   Allows for ADvar class TH argument.
-
-    threshold = 1e-6;
     
     % Handle th as an ADvar instance
     if isa(th, 'ADvar')
@@ -12,13 +10,13 @@ function E = expTw(unitTwist,th)
        return
     end
     
+    threshold = 1e-6;
+
     % Standard case
     if all(isnumeric(unitTwist)) == true
 
         % Prismatic joint
-        if abs(unitTwist(4)) <= threshold && ...
-           abs(unitTwist(5)) <= threshold && ...
-           abs(unitTwist(6)) <= threshold
+        if checkZeroThreshold(unitTwist(4:6), threshold)
             
             % Extract translational components
             axis = xitov(unitTwist);
