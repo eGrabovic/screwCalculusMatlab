@@ -17,15 +17,9 @@ function mat = RotY(theta, deg_bool)
 %       mat:        3x3 rotation matrix
 %
 
-    if(nargin == 2) % 'degree' specified
-        assert(class(deg_bool) == "logical", ...
-           "Only booleans are allowed as second argument");
-        if deg_bool
-            th = deg2rad(theta);
-        else
-            th = theta;
-        end
-    else
+    if exist('deg_bool', 'var') && (deg_bool == true)
+        th = deg2rad(theta);
+    else % deg_bool does not exist or it's not a boolean 'true'
         th = theta;
     end
 
