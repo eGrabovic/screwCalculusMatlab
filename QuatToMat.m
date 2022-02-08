@@ -8,5 +8,5 @@ function mat = QuatToMat(quat)
     Im = eye(3);
     vect_hat = Skew(vectorial);
 
-    mat = Im + 2*vect_hat* (scalar * Im + vect_hat);
+    mat = Im + 2*vect_hat * (scalar * Im + vect_hat);
 end
