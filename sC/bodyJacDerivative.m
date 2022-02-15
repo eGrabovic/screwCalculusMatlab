@@ -1,17 +1,19 @@
 function JacDot = bodyJacDerivative(jac, qdot)
-% TODO: why does this refer to spatialjac?
-% SPATIALJAC(Jac, qdot) computes the derivate of the body Jacobian JAC of
-%   the robot w.r.t. the joint variables derivate QDOT.
+% BODYJACDERIVATIVE(Jac, qdot) computes the derivate JACDOT of the body 
+%   Jacobian JAC of the robot w.r.t. the joint variables derivate QDOT.
 
-n = size(jac, 2);
+    n = size(jac, 2);
+    JacDot = zeros(6, n);
 
-JacDot = zeros(6, n);
-adSum = zeros(6, 6); % adjoint cumulative sum initialization
-for j = n:-1:1 % loop through the columns of the jacobian
+    % adjoint cumulative sum initialization
+    adSum = zeros(6, 6); 
     
-    adSum = adSum - ad(jac(:, j)).*qdot(j); % adjoint of the previous columns
-    JacDot(:, j) = adSum*jac(:, j);
-    
-end
+    % Loop through the columns of the jacobian
+    for j = n:-1:1 
+        % adjoint of the previous columns
+        adSum = adSum - ad(jac(:, j)) .* qdot(j); 
+
+        JacDot(:, j) = adSum * jac(:, j);   
+    end
 
 end
