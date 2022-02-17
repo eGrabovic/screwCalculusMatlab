@@ -1,8 +1,7 @@
 function gst = AD_FWKin(gst0,varargin)
-% AD_FWKIN(gst0,varargin) computes the serial cinematic through Global 
-%   P.O.E. parametrization and its derivate through Automatic 
+% AD_FWKIN(gst0,varargin) computes the serial cinematic of a robot through 
+%   Global P.O.E. parametrization and its derivate through Automatic 
 %   Differentiation technics.
-%   ADvar class is used.
 %
 %   Input
 %       gst0:       spatial-tool offset at initial conditions
@@ -16,15 +15,17 @@ function gst = AD_FWKin(gst0,varargin)
 %   Output
 %
 
-            [~,n] = size(varargin);
-            if n == 1
-                gst = expTw(varargin{1}{1},varargin{1}{2});
-                gst = gst*gst0;
-                return
-            end
-            gst = expTw(varargin{1}{1},varargin{1}{2});
-            for i = 2 : 1 : n
-                gst = gst*expTw(varargin{i}{1},varargin{i}{2});
-            end
-            gst = gst*gst0;
+% TODO: AD_FWKin and FWKin seems to be the same thing, equal to the class
+% members; do we need them?
+
+    [~, n] = size(varargin);
+    gst = expTw(varargin{1}{1},varargin{1}{2});
+    
+    if n > 1
+        for i = 2 : 1 : n
+            gst = gst * expTw(varargin{i}{1}, varargin{i}{2});
         end
+    end
+    
+    gst = gst * gst0;
+end
