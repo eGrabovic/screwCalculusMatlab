@@ -9,8 +9,8 @@ function gst = AD_FWKin(gst0,varargin)
 %       varargin:   expects [{Y1,var1},{Y2,var2},...,{Yn,varn}] the same
 %                   number of 1x2 cells as the number of joints of the
 %                   robot.
-%                   Yn : n-th joint's unit twist unitario;
-%                   varn : n-th joint variable as a ADvar instance
+%                   Yn : n-th joint's unit twist
+%                   varn : n-th joint variable
 %
 %   Output
 %
