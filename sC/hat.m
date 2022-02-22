@@ -19,7 +19,7 @@ function X = hat(vec)
     end
     
     % TODO: remove from here
-    % R3 twist vector case
+    % R3 (6-element) twist vector case
     X = [[hat([vec(4); vec(5); vec(6)]),  vec(1:3)]
          [0,   0,   0,                    0]];
 
