@@ -1,6 +1,6 @@
 function J = spatialJac(gst0, varargin)
-% Jb = spatialJac(gst0, [{Y1,var1},{Y2,var2},...,{Yn,varn}]) computes the
-%   Spatial Jacobian of a serial manipulator.
+% SPATIALJAC(gst0, [{Y1,var1},{Y2,var2},...,{Yn,varn}]) computes the
+%   Spatial Jacobian J of a serial manipulator.
 %
 %   Input
 %       gst0:       initial configuration

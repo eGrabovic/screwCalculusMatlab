@@ -1,4 +1,4 @@
-function Gst = hom_mat(rotm,disp)
+function Gst = hom_mat(screwObj, rotm, disp)
 % HOM_MAT(rotm, disp) returns the homogeneous rototranslational matrix OUT
 %   related to the rotation matrix ROTM and the displacement DISP.
 
@@ -7,6 +7,7 @@ function Gst = hom_mat(rotm,disp)
                 'displacement vector must be a 3x1 array'])
     end
 
-    Gst = [[rotm,       disp];
-           [0, 0, 0,    1]];
+    Gst = [[rotm,           disp];
+           [zeros(1, 3),    1]];
+    
 end

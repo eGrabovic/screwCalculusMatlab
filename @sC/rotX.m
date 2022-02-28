@@ -1,4 +1,4 @@
-function R = rotX(alpha)
+function R = rotX(screwObj, alpha)
 % ROTX(alpha) computes the rotation matrix R related to a rotation of angle 
 %   ALPHA around the x-axis.
 %   Allows for symbolic compiutations.

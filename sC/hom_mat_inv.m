@@ -7,6 +7,6 @@ function GstInv = hom_mat_inv(Gst)
     Rst = Gst(1:3, 1:3);
     dst = Gst(1:3, 4);
 
-    GstInv = [Rst.', -Rst.' * dst;
-              0, 0, 0, 1];
+    GstInv = [[Rst.',       -Rst.' * dst];
+              [0, 0, 0,     1]];
 end

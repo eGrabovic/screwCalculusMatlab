@@ -14,9 +14,6 @@ function gst = FWKin(gst0, varargin)
 %   Output
 %
 
-% TODO: AD_FWKin and FWKin seems to be the same thing, equal to the class
-% members; do we need them?
-
     n = length(varargin);
     gst = expTw(varargin{1}{1},varargin{1}{2});
 

@@ -5,13 +5,13 @@ function uT = unitTwist(jointType, axis, q)
 %   - the distance Q from the origin in case of a 'R' joint
 
     % Prismatic joint
-    if strcmpi(jointType,'P') == true
+    if strcmpi(jointType, 'P') == true
         uT = [axis; 0; 0; 0];
     end
     
-    % Rotoidal joint
-    if strcmpi(jointType,'R') == true
-        uT = [-cross(axis,q); axis];
+    % Revolute joint
+    if strcmpi(jointType, 'R') == true
+        uT = [-cross(axis, q); axis];
     end
 
 end

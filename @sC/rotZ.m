@@ -1,4 +1,4 @@
-function R = rotZ(alpha)
+function R = rotZ(screwObj, alpha)
 % ROTZ(alpha) computes the rotation matrix R related to a rotation of angle 
 %   ALPHA around the z-axis.
 %   Allows for symbolic compiutations.

@@ -1,4 +1,8 @@
-function [n, theta] = rotToAxisAngle(R)
+function [n, theta] = rotToAxisAngle(screwObj, R)
+% ROTTOAXISANGLE(R) uses the rotation matrix R to return the pair 
+%   [N, THETA] where:
+%   - N is the axis around which the rotation takes place
+%   - THETA is the angle of rotation.
             
    theta = acos((trace(R) - 1) / 2) ;
    

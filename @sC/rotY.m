@@ -1,4 +1,4 @@
-function R = rotY(alpha)
+function R = rotY(screwObj, alpha)
 % ROTY(alpha) computes the rotation matrix R related to a rotation of angle 
 %   ALPHA around the y-axis.
 %   Allows for symbolic compiutations.

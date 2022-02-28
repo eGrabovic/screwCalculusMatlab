@@ -1,5 +1,5 @@
 function Xexp = expSkew(axis, th)
-% EXPSKEW(axis, th) computes the exponenxial Xexp such that 
+% EXPSKEW(axis, th) computes the exponenxial XEXP such that 
 %   Xexp = e^(axis * th)
 %   with 
 %   - AXIS: axis versor

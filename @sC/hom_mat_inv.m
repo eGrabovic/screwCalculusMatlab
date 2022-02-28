@@ -1,8 +1,8 @@
-function GstInv = hom_mat_inv(Gst)
+function GstInv = hom_mat_inv(screwObj, Gst)
 % HOM_MAT_INV(Gst) computes the inverse GSTINV of a homogeneous matrix GST.
 
     if all(size(Gst) ~= [4,4])
-        error('Homogenous transformation matrix must have 4x4 dimension')
+        error('Provided argument must be a 4x4 homogeneous matrix')
     end
 
     Rst = Gst(1:3, 1:3);
