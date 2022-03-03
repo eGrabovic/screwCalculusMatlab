@@ -43,8 +43,26 @@ classdef ADvar
             end
         end
         
+        % Get/Set functions
+        % Must be defined here
+
+        function out = get.val(adObj)
+        
+            out = adObj.val;
+        
+        end
+        
+        function out = get.der(adObj)
+        
+            out = adObj.der;
+    
+        end
+        
+    end
+
+    methods
         % Ad-hoc redefinition of some used functions
-        % Only declarations here; definitions in separate files
+        % Only signatures here; definitions in separate files
         
         out = eq(u,v)
         
@@ -101,10 +119,6 @@ classdef ADvar
         u = exp(u)
         
         u = abs(u)
-        
-        out = getVal(u)
-        
-        out = getDer(u)
         
         out = horzcat(varargin)
         
