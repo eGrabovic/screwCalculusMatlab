@@ -1,5 +1,5 @@
 function X = hat(screwObj, v)
-% HAT(vec) transforms a R3 column vector V in its 'hat' R3x3
+% HAT(screwObj, v) transforms a R3 column vector V in its 'hat' R3x3
 %   antisymmetric matrix form X, or transforms a R3 column twist vector V 
 %   in a homogeneous 'hat' R4x4 matrix X.  
 

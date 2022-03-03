@@ -1,4 +1,4 @@
-function J = spatialJac(gst0, varargin)
+function J = spatialJac(varargin)
 % SPATIALJAC(gst0, [{Y1,var1},{Y2,var2},...,{Yn,varn}]) computes the
 %   Spatial Jacobian J of a serial manipulator.
 %
@@ -11,8 +11,6 @@ function J = spatialJac(gst0, varargin)
 %                   Yn : n-th joint's unit twist
 %                   varn : n-th joint variable
 %
-
-% TODO: gst0 not used?
 
     [~, n] = size(varargin);
     

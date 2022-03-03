@@ -7,77 +7,44 @@ classdef sC
 %
 %   N.B. You can improve calling speed of library functions renaming the
 %   class in the workspace (i.e. SC = sC; SC.hat() calls the hat() function)
-%
-% - hat(vector)
-%
-% - rotX(alpha) (the MATLAB one does not allow for symbolic computations)
-%
-% - rotY(alpha)
-%
-% - rotZ(alpha)
-%
-% - hom_mat(rotationMatrix, displacement)
-%
-% - hom_mat_inv(Gst): inverse of a homog. matrix transf. Gst
-%
-% - adjoint(rotationMatrix,displacement) or adjoint(homogeneousmatrix)
-%
-% - expSkew(axis,th) -> exp(omegahat*theta)
-%
-% - unitTwist(jointType,axis,q) (NO HELIC. JOINTS): reference unit Twist
-%
-% - expTw(unitTwist,th) ( NO HELIC. JOINS): twist Exponential
-%
-% - FWKin(gst0,{Y1,var1},{Y2,var2},...,{Yn,varn}): forward Kinematics
-%
-% - AD_FWKin(gst0,{Y1,var1},{Y2,var2},...,{Yn,varn}): automatic diff.
-%   and Forward Kinematics (automatic diff. variable on joint vars).
-%
-% - SpJac({Y1,var1},{Y2,var2},...,{Yn,varn}): spatial Jacobian
-%
-% - BodyJac(gst0,{Y1,var1},{Y2,var2},...,{Yn,varn}): body Jacobian
-%
-%   TODO: copy external help function or what?
 
     methods(Static)
         % Function signatures only.
         % Definitions are in a different file for each function
         
-        X = hat(v)
+        gst = AD_FWKin(screwObj, gst0,varargin)
         
-        [n, theta] = rotToAxisAngle(R)
+        X = adjoint(screwObj, rotm,disp)
         
-        R = rotX(alpha)
+        Jb = BodyJac(screwObj, gst0, varargin)
         
-        R = rotY(alpha)
+        X = expSkew(screwObj, axis,th)
         
-        R = rotZ(alpha)
+        E = expTw(screwObj, unitTwist,th)
         
-        R = rotZ2D(alpha)
+        gst = FWKin(screwObj, gst0,varargin)
         
-        R = diffRotZ2D(alpha)
+        X = hat(screwObj, v)
         
-        Gst = hom_mat(rotm,disp)
+        Gst = hom_mat(screwObj, rotm,disp)
 
-        GstInv = hom_mat_inv(Gst)
+        GstInv = hom_mat_inv(screwObj, Gst)
 
-        GstInv = hom_mat_inv2D(Gst)
+        GstInv = hom_mat_inv2D(screwObj, Gst)
         
-        X = adjoint(rotm,disp)
+        [n, theta] = rotToAxisAngle(screwObj, R)
         
-        X = expSkew(axis,th)
+        R = rotX(screwObj, alpha)
         
-        uT = unitTwist(jointType,axis,q)
+        R = rotY(screwObj, alpha)
         
-        E = expTw(unitTwist,th)
+        R = rotZ(screwObj, alpha)
         
-        gst = FWKin(gst0,varargin)
+        R = rotZ2D(screwObj, alpha)
         
-        gst = AD_FWKin(gst0,varargin)
+        Js = SpJac(screwObj, varargin)
         
-        Js = SpJac(varargin)
-        
-        Jb = BodyJac(gst0,varargin)
+        uT = unitTwist(screwObj, jointType, axis, q)
         
     end
 end
