@@ -9,5 +9,5 @@ function var = chop(var, tol)
         tol = 1e-10;
     end
 
-    var = round(var./tol).*tol;
+    var = round(var ./ tol) .* tol;
 end

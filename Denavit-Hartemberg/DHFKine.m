@@ -27,6 +27,7 @@ function FKmat = DHFKine(varargin)
     end
 
     if ~isa(DHTable,'sym') && any(isnan(DHTable), 'all')
+        DHTableFull
         disp("Wrong argument type!")
         disp("Only numeric or sym matrix are supported.")
         return

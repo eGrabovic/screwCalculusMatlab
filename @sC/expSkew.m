@@ -1,4 +1,4 @@
-function X = expSkew(screwObj, axis,th)
+function X = expSkew(screwObj, axis, th)
 % EXPSKEW(axis, th) computes the exponenxial X such that 
 %   X = e^(axis * th)
 %   with 
@@ -18,7 +18,7 @@ function X = expSkew(screwObj, axis,th)
     if all(isnumeric(axis)) == true
 
         % Check if axis is a unit vector within an acceptable threshold
-        if abs(axis.'*axis) - 1 >= 1e-8 % Square of norm
+        if abs(axis.' * axis) - 1 >= 1e-8 % Square of norm
             error('axis must be a versor');
         end
 

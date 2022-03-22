@@ -10,7 +10,7 @@ function Jb = BodyJacAD(gst0, varargin)
 %                   - varn: n-th joint variable as a ADvar variable
 %
 
-    [~,n] = size(varargin);
+    [~, n] = size(varargin);
     g = ADvar(gst0, zeros(4));
     
     Jb = ADvar(zeros(6, n), zeros(6, n));

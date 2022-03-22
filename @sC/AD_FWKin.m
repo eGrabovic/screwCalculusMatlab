@@ -1,4 +1,4 @@
-function gst = AD_FWKin(screwObj, gst0,varargin)
+function gst = AD_FWKin(screwObj, gst0, varargin)
 % AD_FWKIN(screwObj, gst0, varargin) computes the serial cinematic of a robot through 
 %   Global P.O.E. parametrization and its derivate through Automatic 
 %   Differentiation technics.
@@ -16,12 +16,11 @@ function gst = AD_FWKin(screwObj, gst0,varargin)
 %
 
     [~, n] = size(varargin);
-
-    gst = ADexpTw(varargin{1}{1}, varargin{1}{2});
+    gst = screwObj.expTw(varargin{1}{1}, varargin{1}{2});
     
     if n > 1
         for i = 2 : 1 : n
-            gst = gst * ADexpTw(varargin{i}{1}, varargin{i}{2});
+            gst = gst * screwObj.expTw(varargin{i}{1}, varargin{i}{2});
         end
     end
     

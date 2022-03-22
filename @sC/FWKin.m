@@ -15,7 +15,6 @@ function gst = FWKin(screwObj, gst0,varargin)
 %
 
     n = length(varargin);
-
     gst = sC.expTw(varargin{1}{1}, varargin{1}{2});
 
     if n > 1

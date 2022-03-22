@@ -6,6 +6,6 @@ function GstInv = hom_mat_inv2D(screwObj, Gst)
     dst = Gst(1:2, 3);
 
     GstInv = [[Rst.',   -Rst.' * dst];
-              [0, 0,    1]];
+              [0, 0,     1]];
     
 end
