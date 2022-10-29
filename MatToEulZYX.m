@@ -28,13 +28,13 @@ function eul_angles = MatToEulZYX(Rotmat, deg_bool)
 	        
 	% In cases of singularity we set arbitrarily --> psi = 0
     if thetaisplushalfPi
-	     phi = ATan2(Rotmat(2,3), Rotmat(1,3));
-	     theta = Pi/2;
+	     phi = atan2(Rotmat(2,3), Rotmat(1,3));
+	     theta = pi/2;
 	     psi = 0;
     end
 	  
     if thetaisminushalfPi
-	     phi = ATan2(-Rotmat(2,3), -Rotmat(1,3));
+	     phi = atan2(-Rotmat(2,3), -Rotmat(1,3));
 	     theta = -pi/2;
 	     psi = 0;
     end

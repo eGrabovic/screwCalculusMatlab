@@ -41,3 +41,20 @@ Original ScrewCalculusPro package:
 Porting and new functionalities developed by:
 - **Eugeniu Grabovic**, PhD in Industrial Engineering at Università di Pisa;
 - **[Simone Vollaro](https://github.com/slim71)**, Robotics and Automation Engineering student at Università di Pisa;
+
+## Changelog
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+### [1.0.0] - 29/10/22
+The code has not been thoroughly tested yet, and some documentation is still missing.\
+Some parts can be optimized for MATLAB, since right now everything has been 'only'
+converted from Wolfram Mathematica.
+#### Removed
+- Unused `kinematicTree` class has been removed
+#### Added
+- Versioning portion to README
+- Converted functions from the original project
+
